@@ -1,0 +1,87 @@
+﻿@model PruebaClinica.Models.Medicamento
+
+@{
+    ViewData["Title"] = "Modificar medicamento";
+}
+
+<h1>Modificar medicamento</h1>
+
+<div class="card-body">
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label class="control-label">Codigo de medicamento</label>
+            <input asp-for="Id" class="form-control" readonly />
+            <span asp-validation-for="NombreMedicamento" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NombreMedicamento" class="control-label"></label>
+            <input asp-for="NombreMedicamento" class="form-control" />
+            <span asp-validation-for="NombreMedicamento" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cantidad" class="control-label"></label>
+            <input asp-for="Cantidad" class="form-control" />
+            <span asp-validation-for="Cantidad" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Valor" class="control-label"></label>
+            <input id="idValor" onkeypress="return filterFloat(event, this);"  asp-for="Valor" class="form-control" />
+            <span asp-validation-for="Valor" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FechaRecibido" class="control-label"></label>
+            <input asp-for="FechaRecibido" class="form-control" />
+            <span asp-validation-for="FechaRecibido" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Modificar medicamento</button>
+        </div>
+
+    </form>
+    <div>
+        <a asp-action="Index" class="btn btn-secondary">Volver a Lista</a>
+    </div>
+</div>
+<script type="text/javascript">
+    function filterFloat(evt, input) {
+        var key = window.Event ? evt.which : evt.keyCode;
+        var chark = String.fromCharCode(key);
+        var tempValue = input.value + chark;
+        if (key >= 48 && key <= 57) {
+            if (filter(tempValue) === false) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            if (key == 8 || key == 13 || key == 0) {
+                return true;
+            } else if (key == 46) {
+                if (filter(tempValue) === false) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        }
+    }
+    function filter(__val__) {
+        var preg = /^([0-9]+\.?[0-9]{0,2})$/;
+        if (preg.test(__val__) === true) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+</script>

@@ -1,0 +1,50 @@
+﻿@model PruebaClinica.Models.Medicamento
+
+@{
+    ViewData["Title"] = "Despachar medicamento";
+}
+
+<h1>Despachar medicamento</h1>
+
+<div class="card-body">
+    <form asp-action="Dispatch" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label class="control-label">Codigo de medicamento</label>
+            <input asp-for="Id" class="form-control" readonly />
+            <span asp-validation-for="Id" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NombreMedicamento" class="control-label"></label>
+            <input asp-for="NombreMedicamento" class="form-control" readonly />
+            <span asp-validation-for="NombreMedicamento" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Cantidad disponible</label>
+            <input value="@Model.Cantidad" class="form-control" readonly />
+            <span asp-validation-for="Cantidad" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Cantidad a despachar</label>
+            <input name="Cantidad" class="form-control" />
+            <span asp-validation-for="Cantidad" class="text-danger"></span>
+        </div>
+
+        <input type="hidden" asp-for="Valor" class="form-control" readonly />
+
+        <input type="hidden" asp-for="FechaRecibido" class="form-control" />
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Despachar medicamento</button>
+        </div>
+
+    </form>
+    <div>
+        <a asp-action="Index" class="btn btn-secondary">Volver a Lista</a>
+    </div>
+</div>

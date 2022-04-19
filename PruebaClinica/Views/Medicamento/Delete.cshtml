@@ -1,0 +1,52 @@
+﻿@model PruebaClinica.Models.Medicamento
+
+@{
+    ViewData["Title"] = "Eliminar medicamento";
+}
+
+<h1>Eliminar medicamento</h1>
+
+<div class="card-body">
+    <form asp-action="Delete" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label class="control-label">Codigo de medicamento</label>
+            <input asp-for="Id" class="form-control" readonly />
+            <span asp-validation-for="NombreMedicamento" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NombreMedicamento" class="control-label"></label>
+            <input asp-for="NombreMedicamento" class="form-control" readonly/>
+            <span asp-validation-for="NombreMedicamento" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cantidad" class="control-label"></label>
+            <input asp-for="Cantidad" class="form-control" readonly/>
+            <span asp-validation-for="Cantidad" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Valor" class="control-label"></label>
+            <input asp-for="Valor" class="form-control" readonly/>
+            <span asp-validation-for="Valor" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FechaRecibido" class="control-label"></label>
+            <input asp-for="FechaRecibido" class="form-control" readonly/>
+            <span asp-validation-for="FechaRecibido" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Eliminar medicamento</button>
+        </div>
+
+    </form>
+    <div>
+        <a asp-action="Index" class="btn btn-secondary">Volver a Lista</a>
+    </div>
+</div>
